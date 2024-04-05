@@ -18,15 +18,15 @@ class DoublyLinkedList {
         // There are bugs in this method! Fix them!!!
 
         // Add node of val to head of linked list
-        let newNode = new DoublyLinkedNode(val);
+        const newNode = new DoublyLinkedNode(val);
 
-        if (this.length >= 0) {
-            this.head.previous = newNode;
+        if (this.length >= 1) {
+            this.head.prev = newNode;
             newNode.next = this.head;
             this.head = newNode;
         } else {
-            this.head = newNode;
             this.tail = newNode;
+            this.head = newNode;
         }
 
         this.length++;
@@ -37,7 +37,7 @@ class DoublyLinkedList {
     addToTail(val) {
         // Add node of val to tail of linked list
 
-        // Your code here 
+        // Your code here
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -45,7 +45,17 @@ class DoublyLinkedList {
     removeFromHead() {
         // Remove node at head
 
-        // Your code here 
+        // Your code here
+        if (!this.length) return;
+
+        let oldHead = this.head;
+
+        this.head = this.head.next;
+        this.head.prev = null;
+
+        this.length--;
+
+        return oldHead.value;
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -53,7 +63,7 @@ class DoublyLinkedList {
     removeFromTail() {
         // Remove node at tail
 
-        // Your code here 
+        // Your code here
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -61,7 +71,8 @@ class DoublyLinkedList {
     peekAtHead() {
         // Return value of head node
 
-        // Your code here 
+        // Your code here
+        if (this.length) return this.head.value;
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -69,7 +80,7 @@ class DoublyLinkedList {
     peekAtTail() {
         // Return value of tail node
 
-        // Your code here 
+        // Your code here
 
         // Write your hypothesis on the time complexity of this method here
     }
